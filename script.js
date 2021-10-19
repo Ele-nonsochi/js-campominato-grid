@@ -1,15 +1,60 @@
-//Creo le mie variabili
+// Creo le mie variabili 
+const selectLevel = document.getElementById("select-level");
+const playButton = document.getElementById("btn-play");
+const boardContainer = document.getElementById("board-container");
 
-const levelSelection = document.getElementsByClassName("select_level");
-const playGame = document.getElementsByClassName("btn_play");
-const boardContainer = document.getElementsByClassName("board_container");
+// Creo una funzione per la scelta del livello
+playButton.addEventListener("click", function () {
+    const level = selectLevel.value;
 
-//Creo l'azione che al click scelgo la difficoltà
+    const cells = cellsNumberXlevel(level);
+    generateCells(cells);
+});
 
-playGame.addEventListener("click", function () {
-    let level = parseInt(levelSelection.value);
-    console.log(level);
+//Creo una funzione per stabilire le celle in base alla scelta della difficoltà
 
-    let totalBoxes = levelToBox(level);
-    console.log(totalBoxes);
-})
+function cellsNumberXlevel(level) {
+    let result;
+
+    switch (parseInt(level)) {
+        case 1:
+            result = 49;
+            break;
+        case 2:
+            result = 81;
+            break;
+        case 3:
+            result = 100;
+            break;
+    }
+
+    return result;
+}
+
+// Funzione che genera le celle
+function generateCells(cellsNumber) {
+
+    boardContainer.innerHTML = "";
+
+    // Calcoli per le mie celle
+    const cellsXrow = Math.sqrt(cellsNumber);
+    const cellSize = (100 / cellsXrow) - .4;
+
+
+    for (let i = 0; i < cellsNumber; i++) {
+        const cell = document.createElement("div");
+        cell.classList.add("box");
+        cell.style.width = cellSize + "%";
+        cell.style.height = cellSize + "%";
+        cell.innerHTML = [i + 1];
+
+        cell.addEventListener("click", onCellClick);
+
+        boardContainer.append(cell);
+    }
+};
+
+
+function onCellClick() {
+    this.classList.toggle("click-on-box");
+};

@@ -1,0 +1,18 @@
+/*colore celle rgba(127,255,212,255)*/
+
+body{
+    background-color: rgba(127,255,212,255);
+}
+
+nav{
+    background-color: white;
+}
+
+.board_container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 800px;
+  height: 800px;
+  margin: 0 auto;
+  border: 1px solid black;
+}

@@ -38,7 +38,7 @@ function generateCells(cellsNumber) {
 
     // Calcoli per le mie celle
     const cellsXrow = Math.sqrt(cellsNumber);
-    const cellSize = (100 / cellsXrow) - .4;
+    const cellSize = (100 / cellsXrow);
 
 
     for (let i = 0; i < cellsNumber; i++) {
